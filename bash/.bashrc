@@ -4,26 +4,40 @@
 
 # ~~~~~~~~~~~~~~~ Environment ~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 # Configure editor and terminal colors depending on the operating system.
 case "$OSTYPE" in
-    darwin*)
-        export EDITOR='code --wait'
-        export VISUAL='code --wait'
+darwin*)
+  export EDITOR='code --wait'
+  export VISUAL='code --wait'
 
-        export CLICOLOR=1
-        export LSCOLORS=GxFxCxDxBxegedabagaced
-        ;;
+  export CLICOLOR=1
+  export LSCOLORS=GxFxCxDxBxegedabagaced
+  ;;
 
-    linux*)
-        export EDITOR='nvim'
-        export VISUAL='nvim'
-        ;;
-esa
+linux*)
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+  ;;
+esac
+
+
+# ~~~~~~~~~~~~~~~ Colors ~~~~~~~~~~~~~~~~~~~~~~~~
+
+if [[ "$OSTYPE" == linux* ]] && [ -x /usr/bin/dircolors ]; then
+    if [ -r "$HOME/.dircolors" ]; then
+        eval "$(dircolors -b "$HOME/.dircolors")"
+    else
+        eval "$(dircolors -b)"
+    fi
+
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
 
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 # Set to superior editing mode
 
@@ -47,53 +61,40 @@ export SCRIPTS="$DOTFILES/scripts"
 export ICLOUD="$HOME/icloud"
 export ZETTELKASTEN="$HOME/Zettelkasten"
 
-
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 # Add personal and package-managed executables to PATH.
 export PATH="$HOME/bin:$PATH"
 
 if command -v brew &>/dev/null; then
-    eval "$(brew shellenv)"
+  eval "$(brew shellenv)"
 fi
 
-
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 # Configure history size, duplicate handling, and synchronization between shells.
 export HISTSIZE=5000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoreboth
 
-PROMPT_COMMAND='history -a; history -n'c
-
+PROMPT_COMMAND='history -a; history -n'
 
 # ~~~~~~~~~~~~~~~ Readline ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 # Search command history by prefix with the arrow keys.
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-
 # ~~~~~~~~~~~~~~~ SSH ~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
 
 # ~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 # Create a directory and enter it.
 mkcd() {
-    mkdir -p "$1" && cd "$1"
+  mkdir -p "$1" && cd "$1"
 }
 
-
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 # Node / npm
 
@@ -107,12 +108,12 @@ alias l='ls'
 alias ll='ls -al'
 
 case "$OSTYPE" in
-    darwin*)
-        alias o='open .'
-        ;;
-    linux*)
-        alias o='xdg-open .'
-        ;;
+darwin*)
+  alias o='open .'
+  ;;
+linux*)
+  alias o='xdg-open .'
+  ;;
 esac
 
 # Git
@@ -136,29 +137,23 @@ alias zk="cd \$ZETTELKASTEN"
 
 # ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 # Enable Bash completion for NVM.
 if [ -s "$NVM_DIR/bash_completion" ]; then
-    source "$NVM_DIR/bash_completion"
+  source "$NVM_DIR/bash_completion"
 fi
 
-
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 # Load NVM and select the stable Node.js version.
 export NVM_DIR="$HOME/.nvm"
 
 if [ -s "$NVM_DIR/nvm.sh" ]; then
-    source "$NVM_DIR/nvm.sh"
+  source "$NVM_DIR/nvm.sh"
 fi
-
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 # Initialize Starship prompt. Moved to starship for all my prompt needs.
 eval "$(starship init bash)"
-
 
 # ~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~
