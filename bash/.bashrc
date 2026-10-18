@@ -70,6 +70,13 @@ if command -v brew &>/dev/null; then
   eval "$(brew shellenv)"
 fi
 
+
+# ~~~~~~~~~~~~~~~ Rust / Cargo ~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Load Rust and Cargo environment variables.
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Configure history size, duplicate handling, and synchronization between shells.
@@ -135,12 +142,6 @@ alias gs='printf "\n**\nDO NOT FORGET TO PULL BEFORE COMMITTING\n**\n\n"; git st
 alias in="cd \$ZETTELKASTEN/0 Inbox/"
 alias zk="cd \$ZETTELKASTEN"
 
-# ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~
-
-# Enable Bash completion for NVM.
-if [ -s "$NVM_DIR/bash_completion" ]; then
-  source "$NVM_DIR/bash_completion"
-fi
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -151,9 +152,20 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then
   source "$NVM_DIR/nvm.sh"
 fi
 
+# ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Enable Bash completion for NVM.
+if [ -s "$NVM_DIR/bash_completion" ]; then
+  source "$NVM_DIR/bash_completion"
+fi
+
+
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Initialize Starship prompt. Moved to starship for all my prompt needs.
-eval "$(starship init bash)"
+# Initialize Starship if installed.
+if command -v starship &>/dev/null; then
+  eval "$(starship init bash)"
+fi
+
 
 # ~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~
