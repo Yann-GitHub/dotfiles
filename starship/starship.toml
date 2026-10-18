@@ -1,3 +1,8 @@
+#
+# ~/.config/starship.toml
+#
+
+
 # N'affiche pas de ligne vide entre les commandes
 add_newline = false
 

@@ -20,22 +20,20 @@ linux*)
   ;;
 esac
 
-
 # ~~~~~~~~~~~~~~~ Colors ~~~~~~~~~~~~~~~~~~~~~~~~
 
 if [[ "$OSTYPE" == linux* ]] && [ -x /usr/bin/dircolors ]; then
-    if [ -r "$HOME/.dircolors" ]; then
-        eval "$(dircolors -b "$HOME/.dircolors")"
-    else
-        eval "$(dircolors -b)"
-    fi
+  if [ -r "$HOME/.dircolors" ]; then
+    eval "$(dircolors -b "$HOME/.dircolors")"
+  else
+    eval "$(dircolors -b)"
+  fi
 
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
-
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -66,16 +64,20 @@ export ZETTELKASTEN="$HOME/Zettelkasten"
 # Add personal and package-managed executables to PATH.
 export PATH="$HOME/bin:$PATH"
 
+# Prefer the official Neovim release on the Raspberry Pi when installed.
+if [[ "$OSTYPE" == linux* ]] && [[ -x /opt/nvim-linux-arm64/bin/nvim ]]; then
+  export PATH="/opt/nvim-linux-arm64/bin:$PATH"
+fi
+
+# Initialize Homebrew environment when installed.
 if command -v brew &>/dev/null; then
   eval "$(brew shellenv)"
 fi
-
 
 # ~~~~~~~~~~~~~~~ Rust / Cargo ~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Load Rust and Cargo environment variables.
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-
 
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -139,9 +141,8 @@ alias gss='git status -sb'
 alias gs='printf "\n**\nDO NOT FORGET TO PULL BEFORE COMMITTING\n**\n\n"; git status'
 
 # vim & second brain
-alias in="cd \$ZETTELKASTEN/0 Inbox/"
+alias in="cd \$ZETTELKASTEN/Inbox"
 alias zk="cd \$ZETTELKASTEN"
-
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -159,13 +160,11 @@ if [ -s "$NVM_DIR/bash_completion" ]; then
   source "$NVM_DIR/bash_completion"
 fi
 
-
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Initialize Starship if installed.
 if command -v starship &>/dev/null; then
   eval "$(starship init bash)"
 fi
-
 
 # ~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~
