@@ -1,0 +1,20 @@
+
+#!/usr/bin/env bash
+# zo - Select a directory with fzf and output a cd command for eval
+
+# List directories with find or fd, then select one with fzf
+# selected_dir=$(find . -type d -not -path '*/\.*' | fzf --height 40% --border --prompt="Select a directory: ")
+selected_dir=$(fd --type d . | fzf --height 40% --border --prompt="Select a directory: ") || exit 0
+
+# Check whether a directory was selected
+if [[ -n "$selected_dir" ]]; then
+  # Verify that the directory exists
+  if [[ -d "$selected_dir" ]]; then
+    # Output only the cd command to stdout for eval
+    printf 'cd %q\n' "$selected_dir"
+  else
+    echo "Error: '$selected_dir' is not a valid directory" >&2
+  fi
+else
+  echo "No directory selected" >&2
+fi

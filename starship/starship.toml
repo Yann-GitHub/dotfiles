@@ -1,0 +1,53 @@
+# N'affiche pas de ligne vide entre les commandes
+add_newline = false
+
+# Ordre d'affichage des éléments dans votre prompt
+format = """
+#$hostname\
+[LoGodeN](bold cyan) \
+$directory\
+$git_branch\
+$git_status\
+$node\
+$line_break\
+$character"""
+
+#[hostname]
+#ssh_only = false
+#style = "bold cyan"
+#format = "[$hostname]($style) "
+
+# Configuration du curseur d'écriture
+[character]
+success_symbol = "[❯](bold green) "
+error_symbol = "[❯](bold red) "
+
+# Configuration du dossier actuel
+[directory]
+truncation_length = 3
+style = "bold purple"
+read_only = " 🔒"
+
+# Configuration de la branche Git
+[git_branch]
+symbol = "🌿 "
+style = "bold green"
+format = "on [$symbol$branch]($style) "
+
+# Configuration de l'état de Git
+[git_status]
+style = "bold yellow"
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
+conflicted = "="
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = "?"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+# Désactiver le module python pour rester minimaliste
+[python]
+disabled = true

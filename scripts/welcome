@@ -1,0 +1,13 @@
+#!/bin/bash
+
+light_blue='\e[1;35m'
+NC='\e[0m'
+
+clear
+
+#echo -ne "${light_blue}Hello, $USER. Today is, "; date; echo -ne "${NC}"
+echo -e "${light_blue}Hello, $USER. Today is, $(date)${NC}"
+echo
+ncal
+echo
+echo -ne "${light_blue}Sysinfo: $(uptime)"; echo -e ${NC};
