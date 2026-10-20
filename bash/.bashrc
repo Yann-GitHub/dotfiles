@@ -10,7 +10,6 @@ shopt -s autocd
 # Append history instead of overwriting it.
 shopt -s histappend
 
-
 # ~~~~~~~~~~~~~~~ Environment ~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Configure editor and terminal colors depending on the operating system.
@@ -68,7 +67,6 @@ export SCRIPTS="$DOTFILES/scripts"
 export ICLOUD="$HOME/icloud"
 export ZETTELKASTEN="$HOME/Zettelkasten"
 
-
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Add personal and package-managed executables to PATH.
@@ -80,19 +78,19 @@ export PATH="$HOME/bin:$PATH"
 # Prefer the official Neovim release for each system.
 NVIM_BIN=""
 case "$OSTYPE" in
-  linux*)
-    NVIM_BIN="/opt/nvim-linux-arm64/bin"
-    ;;
-  darwin*)
-    NVIM_BIN="$HOME/Applications/nvim-macos-x86_64/bin"
-    ;;
+linux*)
+  NVIM_BIN="/opt/nvim-linux-arm64/bin"
+  ;;
+darwin*)
+  NVIM_BIN="$HOME/Applications/nvim-macos-x86_64/bin"
+  ;;
 esac
 
 # Add Neovim to PATH only when installed and not already present.
 if [[ -n "$NVIM_BIN" && -x "$NVIM_BIN/nvim" ]]; then
   case ":$PATH:" in
-    *":$NVIM_BIN:"*) ;;
-    *) export PATH="$NVIM_BIN:$PATH" ;;
+  *":$NVIM_BIN:"*) ;;
+  *) export PATH="$NVIM_BIN:$PATH" ;;
   esac
 fi
 
@@ -169,7 +167,11 @@ alias gpsh='git push'
 alias gss='git status -sb'
 alias gs='printf "\n**\nDO NOT FORGET TO PULL BEFORE COMMITTING\n**\n\n"; git status'
 
-# vim & second brain
+# Navigation
+
+alias dot='cd "$DOTFILES"'
+alias lab='cd "$LAB"'
+alias scripts='cd "$SCRIPTS"'
 alias in="cd \$ZETTELKASTEN/Inbox"
 alias zk="cd \$ZETTELKASTEN"
 
