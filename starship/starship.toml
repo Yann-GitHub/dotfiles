@@ -53,6 +53,12 @@ staged = "+"
 renamed = "»"
 deleted = "✘"
 
+# Node.js
+[nodejs]
+format = "via [⬢ $version](bold green) "
+# À activer uniquement si tu veux masquer Node.js :
+# disabled = true
+
 # Désactiver le module python pour rester minimaliste
 [python]
 disabled = true
