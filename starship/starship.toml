@@ -21,6 +21,12 @@ $character"""
 #ssh_only = false
 #style = "bold cyan"
 #format = "[$hostname]($style) "
+#
+[hostname]
+ssh_only = true
+ssh_symbol = " » "
+#style = "bold cyan"
+#format = "[$ssh_symbol$hostname]($style) "
 
 # Configuration du curseur d'écriture
 [character]
