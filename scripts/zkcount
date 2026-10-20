@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
-scale=$1 || "1.5x1.5"
-set -x
-xrandr --output DP-0 --size 1920x1080 --pos 0x0 --scale $scale
-set +x
+
+set -euo pipefail
+
+ZETTELKASTEN="$HOME/Zettelkasten"
+
+if [[ ! -d "$ZETTELKASTEN" ]]; then
+    echo "Error: Zettelkasten directory not found: $ZETTELKASTEN" >&2
+    exit 1
+fi
+
+if command -v fd >/dev/null 2>&1; then
+    FD="$(command -v fd)"
+elif command -v fdfind >/dev/null 2>&1; then
+    FD="$(command -v fdfind)"
+else
+    echo "Error: fd/fdfind is not installed." >&2
+    exit 1
+fi
+
+COUNT=$("$FD" -L -e md . "$ZETTELKASTEN" | wc -l | tr -d '[:space:]')
+
+printf 'Zettelkasten: %s notes\n' "$COUNT"
