@@ -2,6 +2,15 @@
 # ~/.bashrc
 #
 
+# ~~~~~~~~~~~~~~~ Bash options ~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Allow entering a directory without typing cd.
+shopt -s autocd
+
+# Append history instead of overwriting it.
+shopt -s histappend
+
+
 # ~~~~~~~~~~~~~~~ Environment ~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Configure editor and terminal colors depending on the operating system.
