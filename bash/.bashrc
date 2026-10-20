@@ -68,15 +68,35 @@ export SCRIPTS="$DOTFILES/scripts"
 export ICLOUD="$HOME/icloud"
 export ZETTELKASTEN="$HOME/Zettelkasten"
 
+
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Add personal and package-managed executables to PATH.
+# if [[ "$OSTYPE" == linux* ]] && [[ -x /opt/nvim-linux-arm64/bin/nvim ]]; then
+#   export PATH="/opt/nvim-linux-arm64/bin:$PATH"
+# fi
 export PATH="$HOME/bin:$PATH"
 
-# Prefer the official Neovim release on the Raspberry Pi when installed.
-if [[ "$OSTYPE" == linux* ]] && [[ -x /opt/nvim-linux-arm64/bin/nvim ]]; then
-  export PATH="/opt/nvim-linux-arm64/bin:$PATH"
+# Prefer the official Neovim release for each system.
+NVIM_BIN=""
+case "$OSTYPE" in
+  linux*)
+    NVIM_BIN="/opt/nvim-linux-arm64/bin"
+    ;;
+  darwin*)
+    NVIM_BIN="$HOME/Applications/nvim-macos-x86_64/bin"
+    ;;
+esac
+
+# Add Neovim to PATH only when installed and not already present.
+if [[ -n "$NVIM_BIN" && -x "$NVIM_BIN/nvim" ]]; then
+  case ":$PATH:" in
+    *":$NVIM_BIN:"*) ;;
+    *) export PATH="$NVIM_BIN:$PATH" ;;
+  esac
 fi
+
+unset NVIM_BIN
 
 # Initialize Homebrew environment when installed.
 if command -v brew &>/dev/null; then
