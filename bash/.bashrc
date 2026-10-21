@@ -175,6 +175,10 @@ alias scripts='cd "$SCRIPTS"'
 alias in="cd \$ZETTELKASTEN/Inbox"
 alias zk="cd \$ZETTELKASTEN"
 
+# Fabric
+
+alias fabric='fabric-ai'
+
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Load NVM and select the stable Node.js version.
