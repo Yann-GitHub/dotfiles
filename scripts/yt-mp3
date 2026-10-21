@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Download media and extract audio as MP3.
+# Requires yt-dlp and FFmpeg.
+
+exec yt-dlp \
+  --ignore-errors \
+  --output "%(title)s.%(ext)s" \
+  --extract-audio \
+  --audio-format mp3 \
+  "$@"

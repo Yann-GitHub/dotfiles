@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Download English and French subtitles to ~/Downloads.
+# Prefer manually authored subtitles; also fetch auto-generated ones.
+# Requires yt-dlp.
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $(basename "$0") URL" >&2
+  exit 1
+fi
+
+DOWNLOADS="$HOME/Downloads"
+mkdir -p "$DOWNLOADS"
+
+yt-dlp \
+  --write-subs \
+  --write-auto-subs \
+  --sub-langs "en.*,fr.*" \
+  --skip-download \
+  --output "$DOWNLOADS/%(title)s.%(ext)s" \
+  "$1"
