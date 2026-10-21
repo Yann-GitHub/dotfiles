@@ -106,6 +106,11 @@ fi
 # Load Rust and Cargo environment variables.
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
+# ~~~~~~~~~~~~~~~ Go ~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Add Go binaries to PATH.
+export PATH="$HOME/go/bin:$PATH"
+
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Configure history size, duplicate handling, and synchronization between shells.
