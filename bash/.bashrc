@@ -73,7 +73,7 @@ export ZETTELKASTEN="$HOME/Zettelkasten"
 # if [[ "$OSTYPE" == linux* ]] && [[ -x /opt/nvim-linux-arm64/bin/nvim ]]; then
 #   export PATH="/opt/nvim-linux-arm64/bin:$PATH"
 # fi
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 # Prefer the official Neovim release for each system.
 NVIM_BIN=""
