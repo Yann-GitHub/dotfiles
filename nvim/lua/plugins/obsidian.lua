@@ -12,8 +12,8 @@ return {
 
       workspaces = {
         {
-          name = "testVault",
-          path = vim.fn.expand("~/homelab/ObsidianTest"),
+          name = "Zettelkasten",
+          path = vim.fn.expand("~/Zettelkasten/"),
         },
       },
     },
