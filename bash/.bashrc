@@ -184,9 +184,11 @@ alias scripts='cd "$SCRIPTS"'
 alias in="cd \$ZETTELKASTEN/Inbox"
 alias zk="cd \$ZETTELKASTEN"
 
-# Fabric
+# Fabric (macos aja)
 
-alias fabric='fabric-ai'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias fabric='fabric-ai'
+fi
 
 # ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
 
