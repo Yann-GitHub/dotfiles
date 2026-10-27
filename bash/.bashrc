@@ -113,11 +113,15 @@ export PATH="$HOME/go/bin:$PATH"
 
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Configure history size, duplicate handling, and synchronization between shells.
+# Configure history size
 export HISTSIZE=5000
 export HISTFILESIZE=10000
+
+#Ignore commands prefixed with a space and consecutive duplicates.
 export HISTCONTROL=ignoreboth
 
+# Append commands to the history file and import new commands from other sessions.
+shopt -s histappend
 PROMPT_COMMAND='history -a; history -n'
 
 # ~~~~~~~~~~~~~~~ Readline ~~~~~~~~~~~~~~~~~~~~~~~~
