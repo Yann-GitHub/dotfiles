@@ -8,8 +8,8 @@ add_newline = false
 
 # Ordre d'affichage des éléments dans votre prompt
 format = """
-#$hostname\
-[LoGodeN](bold cyan) \
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -17,16 +17,16 @@ $node\
 $line_break\
 $character"""
 
-#[hostname]
-#ssh_only = false
-#style = "bold cyan"
-#format = "[$hostname]($style) "
+[username]
+ssh_only = false
+style = "bold cyan"
+format = "[$user]($style)"
 #
 [hostname]
 ssh_only = true
-ssh_symbol = " » "
-#style = "bold cyan"
-#format = "[$ssh_symbol$hostname]($style) "
+ssh_symbol = "@"
+style = "bold cyan"
+format = "[$ssh_symbol$hostname]($style) "
 
 # Configuration du curseur d'écriture
 [character]
