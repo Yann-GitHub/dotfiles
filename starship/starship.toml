@@ -19,8 +19,10 @@ $character"""
 
 [username]
 show_always = true
-style = "cyan"
+style_user = 'cyan bold'
+style_root = 'red bold'
 format = "[$user]($style)"
+aliases = { "yann" = "LoGodeN" }
 
 [hostname]
 ssh_only = true
