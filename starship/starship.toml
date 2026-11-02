@@ -18,14 +18,15 @@ $line_break\
 $character"""
 
 [username]
+show_always = true
 ssh_only = false
-style = "bold cyan"
-format = "[$user]($style)"
-#
+style = "cyan"
+format = "[$user]($style) "
+
 [hostname]
 ssh_only = true
 ssh_symbol = "@"
-style = "bold cyan"
+style = "cyan"
 format = "[$ssh_symbol$hostname]($style) "
 
 # Configuration du curseur d'écriture
@@ -36,14 +37,14 @@ error_symbol = "[❯](bold red) "
 # Configuration du dossier actuel
 [directory]
 truncation_length = 3
-style = "bold purple"
+style = "purple"
 read_only = " 🔒"
 
 # Configuration de la branche Git
 [git_branch]
 #symbol = "🌿 "
 symbol = " "
-style = "bold green"
+style = "green"
 format = "on [$symbol$branch]($style) "
 
 # Configuration de l'état de Git
