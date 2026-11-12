@@ -21,13 +21,13 @@ disabled = true
 style_user = 'cyan bold'
 style_root = 'red bold'
 format = "[$user]($style) "
-aliases = { "yann" = "LoGodeN", "pi" = "MiniBoy", "debian" = "Muaddib" }
+aliases = { "yann" = "LoGodeN", "pi" = "MiniBoyUser", "debian" = "Muaddib" }
 
 [hostname]
 ssh_only = true
 ssh_symbol = ""
 style = "cyan bold"
-aliases = { "homelab" = "Homelab", "vps-8d403117" = "Arrakis", "home" = "Home" }
+aliases = { "homelab" = "MiniBoy", "vps-8d403117" = "Arrakis", "home" = "Home" }
 format = "[$ssh_symbol$hostname]($style) "
 
 # Input cursor configuration
