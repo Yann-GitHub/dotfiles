@@ -2,56 +2,55 @@
 # ~/.config/starship.toml
 #
 
-
-# N'affiche pas de ligne vide entre les commandes
+# Do not print a blank line between commands
 add_newline = false
 
-# Ordre d'affichage des éléments dans votre prompt
+# Display order of elements in your prompt
 format = """
 $username\
 $hostname\
 $directory\
 $git_branch\
 $git_status\
-$node\
+$nodejs\
 $line_break\
 $character"""
 
 [username]
-show_always = true
+disabled = true
 style_user = 'cyan bold'
 style_root = 'red bold'
-format = "[$user]($style)"
+format = "[$user]($style) "
 aliases = { "yann" = "LoGodeN", "pi" = "MiniBoy", "debian" = "Muaddib" }
 
 [hostname]
 ssh_only = true
-ssh_symbol = "@"
-style = "cyan"
+ssh_symbol = ""
+style = "cyan bold"
 aliases = { "homelab" = "Homelab", "vps-8d403117" = "Arrakis", "home" = "Home" }
-format = "[$ssh_symbol$hostname]($style)"
+format = "[$ssh_symbol$hostname]($style) "
 
-# Configuration du curseur d'écriture
+# Input cursor configuration
 [character]
 success_symbol = "[❯](bold green) "
 error_symbol = "[❯](bold red) "
 
-# Configuration du dossier actuel
+# Current directory configuration
 [directory]
 truncation_length = 2
 truncation_symbol = "…/"
 style = "purple"
-format = " [$path]($style)"
+format = "[$path]($style)"
 read_only = " 🔒"
 
-# Configuration de la branche Git
+# Git branch configuration
 [git_branch]
 #symbol = "🌿 "
 symbol = " "
 style = "green"
 format = " on [$symbol$branch]($style) "
 
-# Configuration de l'état de Git
+# Git status configuration
 [git_status]
 style = "bold yellow"
 format = "([\\[$all_status$ahead_behind\\]]($style) )"
@@ -68,9 +67,9 @@ deleted = "✘"
 # Node.js
 [nodejs]
 format = "via [⬢ $version](bold green) "
-# À activer uniquement si tu veux masquer Node.js :
+# Uncomment only if you want to hide Node.js:
 # disabled = true
 
-# Désactiver le module python pour rester minimaliste
+# Disable python module to stay minimalist
 [python]
 disabled = true
