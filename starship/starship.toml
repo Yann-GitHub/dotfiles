@@ -18,7 +18,7 @@ $character"""
 
 [username]
 disabled = true
-style_user = 'cyan bold'
+style_user = 'cyan'
 style_root = 'red bold'
 format = "[$user]($style) "
 aliases = { "yann" = "LoGodeN", "pi" = "MiniBoyUser", "debian" = "Muaddib" }
@@ -26,33 +26,33 @@ aliases = { "yann" = "LoGodeN", "pi" = "MiniBoyUser", "debian" = "Muaddib" }
 [hostname]
 ssh_only = true
 ssh_symbol = ""
-style = "cyan bold"
+style = "bright-black"
 aliases = { "homelab" = "MiniBoy", "vps-8d403117" = "Arrakis", "home" = "Home" }
 format = "[$ssh_symbol$hostname]($style) "
 
 # Input cursor configuration
 [character]
-success_symbol = "[❯](bold green) "
-error_symbol = "[❯](bold red) "
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](purple)"
 
 # Current directory configuration
 [directory]
 truncation_length = 2
 truncation_symbol = "…/"
-style = "purple"
+style = "blue"
 format = "[$path]($style)"
 read_only = " 🔒"
 
 # Git branch configuration
 [git_branch]
-#symbol = "🌿 "
 symbol = " "
-style = "green"
+style = "bright-black"
 format = " on [$symbol$branch]($style) "
 
 # Git status configuration
 [git_status]
-style = "bold yellow"
+style = "cyan"
 format = "([\\[$all_status$ahead_behind\\]]($style) )"
 conflicted = "="
 ahead = "⇡"
@@ -66,7 +66,7 @@ deleted = "✘"
 
 # Node.js
 [nodejs]
-format = "via [⬢ $version](bold green) "
+format = "via [⬢ $version](bright-black) "
 # Uncomment only if you want to hide Node.js:
 # disabled = true
 
