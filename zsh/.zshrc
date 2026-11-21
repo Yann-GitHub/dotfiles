@@ -212,6 +212,12 @@ fi
 autoload -Uz compinit
 compinit
 
+# Interactive completion menu
+zstyle ':completion:*' menu select
+
+# Include hidden files in completion
+setopt GLOB_DOTS
+
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Starship prompt
