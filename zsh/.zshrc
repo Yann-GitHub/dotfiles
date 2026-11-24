@@ -131,6 +131,8 @@ mkcd() {
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+alias v=nvim
+
 # General
 
 if [[ "$OSTYPE" == "linux"* ]]; then
@@ -195,13 +197,38 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   alias fabric='fabric-ai'
 fi
 
-# ~~~~~~~~~~~~~~~ NVM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# ~~~~~~~~~~~~~~~ Sourcing ~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Load NVM and select the stable Node.js version
 
 export NVM_DIR="$HOME/.nvm"
 
 if [[ -s "$NVM_DIR/nvm.sh" ]]; then
     source "$NVM_DIR/nvm.sh"
 fi
+
+# Load fzf shell integration
+if command -v fzf &>/dev/null; then
+    source <(fzf --zsh)
+fi
+
+
+# ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Enable Bash completion for NVM.
+if [ -s "$NVM_DIR/bash_completion" ]; then
+  source "$NVM_DIR/bash_completion"
+fi
+
+# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Initialize Starship if installed.
+if command -v starship &>/dev/null; then
+  eval "$(starship init bash)"
+fi
+
+# ~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~
 
 # ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~~
 
