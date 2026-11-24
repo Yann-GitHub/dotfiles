@@ -27,9 +27,14 @@ esac
 
 # GNU dircolors (Linux only)
 
-if [[ "$(uname -s)" == "Linux" ]] && command -v dircolors >/dev/null 2>&1; then
-    eval "$(dircolors -b)"
+if [[ "$OSTYPE" == linux* ]] && command -v dircolors >/dev/null 2>&1; then
+    if [[ -r "$HOME/.dircolors" ]]; then
+        eval "$(dircolors -b "$HOME/.dircolors")"
+    else
+        eval "$(dircolors -b)"
+    fi
 fi
+
 
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~
 
@@ -213,22 +218,6 @@ if command -v fzf &>/dev/null; then
     source <(fzf --zsh)
 fi
 
-
-# ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~
-
-# Enable Bash completion for NVM.
-if [ -s "$NVM_DIR/bash_completion" ]; then
-  source "$NVM_DIR/bash_completion"
-fi
-
-# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
-
-# Initialize Starship if installed.
-if command -v starship &>/dev/null; then
-  eval "$(starship init bash)"
-fi
-
-# ~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~
 
 # ~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~~~~~
 
